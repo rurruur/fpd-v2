@@ -11,3 +11,12 @@ export const PostSaveParams = PostBaseSchema.partial({
   created_at: true,
 });
 export type PostSaveParams = z.infer<typeof PostSaveParams>;
+
+// Post - WriteParams
+export const PostWriteParams = PostSaveParams.pick({
+  id: true,
+  title: true,
+  content: true,
+  name: true,
+});
+export type PostWriteParams = z.infer<typeof PostWriteParams>;

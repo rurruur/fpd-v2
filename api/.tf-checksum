@@ -1,5 +1,9 @@
 [
   {
+    "path": "/dist/application/post/post.model.js",
+    "checksum": "6362ade69676a0c22cb6a032a0621ffa4fe7fc79"
+  },
+  {
     "path": "/dist/application/user/user.model.js",
     "checksum": "29f2e571a43c0ad4d3614f494a3868ddc39808bc"
   },
@@ -13,15 +17,15 @@
   },
   {
     "path": "/src/application/post/post.entity.json",
-    "checksum": "d449ee102162666d7adec0edc062cfa642e52a63"
+    "checksum": "75fdd5767701fc237628720574e3ef7b238d7112"
   },
   {
     "path": "/src/application/post/post.types.ts",
-    "checksum": "2d24a38f8cbb3e666b3c61e8266c06096ab04319"
+    "checksum": "7c4ac371512aea21275b7480c1dc7f5a308dd3a0"
   },
   {
     "path": "/src/application/sonamu.generated.ts",
-    "checksum": "93a24ed8d88bc244a8aad244ad40dfcc6de85fff"
+    "checksum": "97044ac7d3f690f91dbdb9f1902239ae8ed73293"
   },
   {
     "path": "/src/application/user/user.entity.json",

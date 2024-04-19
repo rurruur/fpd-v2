@@ -39,7 +39,9 @@
     }
   ],
   "indexes": [],
-  "subsets": { "A": ["id", "created_at"] },
+  "subsets": {
+    "A": ["id", "created_at", "title", "content", "name", "file_url", "user.id"]
+  },
   "enums": {
     "PostOrderBy": { "id-desc": "ID최신순" },
     "PostSearchField": { "id": "ID" }

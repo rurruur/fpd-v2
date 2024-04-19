@@ -19,7 +19,15 @@ export const commentSubsetQueries: { [key in CommentSubsetKey]: SubsetQuery } =
 // SubsetQuery: Post
 export const postSubsetQueries: { [key in PostSubsetKey]: SubsetQuery } = {
   A: {
-    select: ["posts.id", "posts.created_at"],
+    select: [
+      "posts.id",
+      "posts.created_at",
+      "posts.title",
+      "posts.content",
+      "posts.name",
+      "posts.file_url",
+      "posts.user_id",
+    ],
     virtual: [],
     joins: [],
     loaders: [],

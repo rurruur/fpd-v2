@@ -122,6 +122,11 @@ export type CommentSubsetKey = z.infer<typeof CommentSubsetKey>;
 export const PostSubsetA = z.object({
   id: z.number().int().nonnegative(),
   created_at: SQLDateTimeString,
+  title: z.string().max(100),
+  content: z.string().max(65535),
+  name: z.string().max(30),
+  file_url: z.string().max(128).nullable(),
+  user_id: z.number().int().nonnegative().nullable(),
 });
 export type PostSubsetA = z.infer<typeof PostSubsetA>;
 export type PostSubsetMapping = {

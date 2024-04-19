@@ -5,5 +5,10 @@
   },
   "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "session": "ShxVRlSVodMy%2FcC3KTmQArQavCqEE7hLRcy4hujXFeb0rYrHMaLOQqp5POEdMCB4uE7Hc6I385aCfcpRzLV5s1oA670kXy9odJKzwhkne9CZ1q61izjyKELAx1%2BW11ta2IBdpwl0h28W1i66hsPWIBKtqrLtUy4PWVrbW2vJuAhP5DgvhvI%3D%3B5Z9We4RO6isrssiv7l7bdieRB58diut5; Max-Age=315360000"
+    }
+  }
 }
