@@ -82,6 +82,13 @@ export namespace UserService {
     });
   }
 
+  export async function me(): Promise<UserSubsetSS> {
+    return fetch({
+      method: "GET",
+      url: `/api/user/me?${qs.stringify({})}`,
+    });
+  }
+
   export async function join(params: UserJoinParams): Promise<number> {
     return fetch({
       method: "POST",

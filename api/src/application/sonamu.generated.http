@@ -59,9 +59,8 @@ Content-Type: application/json
 
 POST {{baseUrl}}/api/post/delMine
 Content-Type: application/json
-Cookie: session={{session}}
 
-{ "ids": [2] }
+{ "ids": [0] }
 
 
 ###
@@ -114,6 +113,12 @@ Content-Type: application/json
 
 { "ids": [0] }
 
+
+###
+
+GET {{baseUrl}}/api/user/me
+	?
+Content-Type: application/json
 
 ###
 

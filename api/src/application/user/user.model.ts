@@ -155,6 +155,15 @@ class UserModelClass extends BaseModelClass {
     return ids.length;
   }
 
+  @api({ httpMethod: "GET", guards: ["normal"] })
+  async me({ user }: Context): Promise<UserSubsetSS> {
+    if (!user) {
+      throw new BadRequestException("로그인이 필요합니다.");
+    }
+
+    return this.findById("SS", user.id);
+  }
+
   @api({ httpMethod: "POST" })
   async join(params: UserJoinParams): Promise<number> {
     const { rows: exists } = await this.findMany("A", {
