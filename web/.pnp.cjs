@@ -29,6 +29,7 @@ const RAW_RUNTIME_STATE =
           ["@sonamu-kit/react-sui", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:0.1.11"],\
           ["@types/lodash-es", "npm:4.17.12"],\
           ["@types/node", "npm:18.19.31"],\
+          ["@types/prop-types", "npm:15.7.12"],\
           ["@types/qs", "npm:6.9.15"],\
           ["@types/react", "npm:18.2.79"],\
           ["@types/react-dom", "npm:18.2.25"],\
@@ -36,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:0.27.2"],\
           ["jotai", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:2.8.0"],\
           ["lodash-es", "npm:4.17.21"],\
+          ["prop-types", "npm:15.8.1"],\
           ["qs", "npm:6.12.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:18.2.0"],\
@@ -1974,6 +1976,7 @@ const RAW_RUNTIME_STATE =
           ["@sonamu-kit/react-sui", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:0.1.11"],\
           ["@types/lodash-es", "npm:4.17.12"],\
           ["@types/node", "npm:18.19.31"],\
+          ["@types/prop-types", "npm:15.7.12"],\
           ["@types/qs", "npm:6.9.15"],\
           ["@types/react", "npm:18.2.79"],\
           ["@types/react-dom", "npm:18.2.25"],\
@@ -1981,6 +1984,7 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:0.27.2"],\
           ["jotai", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:2.8.0"],\
           ["lodash-es", "npm:4.17.21"],\
+          ["prop-types", "npm:15.8.1"],\
           ["qs", "npm:6.12.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:18.2.0"],\
