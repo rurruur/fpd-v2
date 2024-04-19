@@ -1,14 +1,18 @@
 [
   {
+    "path": "/dist/application/user/user.model.js",
+    "checksum": "29f2e571a43c0ad4d3614f494a3868ddc39808bc"
+  },
+  {
     "path": "/src/application/sonamu.generated.ts",
-    "checksum": "92d566bdb2662c4ea834a69b30d776ab780e91a8"
+    "checksum": "3c51053918c09bb234b20efc150e2669159d169a"
   },
   {
     "path": "/src/application/user/user.entity.json",
-    "checksum": "24295a90f7b876c78fdab3d1e8031e54b10d15db"
+    "checksum": "bef5dc40ec90cb6ee8a9d1eb61a9a01d3b237668"
   },
   {
     "path": "/src/application/user/user.types.ts",
-    "checksum": "d860467474bdf8caf557039ecf835831a8ed73bb"
+    "checksum": "8b2aa138777f5b79b8bddbf8be0cc16c14822814"
   }
 ]

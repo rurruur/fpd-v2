@@ -1,0 +1,36 @@
+{
+  "id": "User",
+  "table": "users",
+  "title": "USER",
+  "props": [
+    { "name": "id", "type": "integer", "unsigned": true, "desc": "ID" },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "desc": "등록일시",
+      "dbDefault": "CURRENT_TIMESTAMP"
+    },
+    { "name": "name", "desc": "이름", "type": "string", "length": 30 },
+    { "name": "nickname", "desc": "별명", "type": "string", "length": 30 },
+    { "name": "phone", "desc": "휴대폰번호", "type": "string", "length": 20 },
+    { "name": "password", "desc": "비밀번호", "type": "string", "length": 128 },
+    {
+      "name": "role",
+      "desc": "\b역할",
+      "dbDefault": "\"normal\"",
+      "type": "enum",
+      "length": 20,
+      "id": "UserRole"
+    }
+  ],
+  "indexes": [],
+  "subsets": {
+    "A": ["id", "created_at", "name", "nickname", "phone", "role"],
+    "SS": ["id", "name", "nickname", "phone", "role"]
+  },
+  "enums": {
+    "UserOrderBy": { "id-desc": "ID최신순" },
+    "UserSearchField": { "id": "ID" },
+    "UserRole": { "admin": "관리자", "normal": "일반사용자" }
+  }
+}
