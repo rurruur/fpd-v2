@@ -4,8 +4,24 @@
     "checksum": "29f2e571a43c0ad4d3614f494a3868ddc39808bc"
   },
   {
+    "path": "/src/application/comment/comment.entity.json",
+    "checksum": "3ca01be8c51c4135905bbf5dfaeb51fdad011f44"
+  },
+  {
+    "path": "/src/application/comment/comment.types.ts",
+    "checksum": "d34e9a41803a25581c3a842a2ad72a29b09ac699"
+  },
+  {
+    "path": "/src/application/post/post.entity.json",
+    "checksum": "d449ee102162666d7adec0edc062cfa642e52a63"
+  },
+  {
+    "path": "/src/application/post/post.types.ts",
+    "checksum": "2d24a38f8cbb3e666b3c61e8266c06096ab04319"
+  },
+  {
     "path": "/src/application/sonamu.generated.ts",
-    "checksum": "3c51053918c09bb234b20efc150e2669159d169a"
+    "checksum": "93a24ed8d88bc244a8aad244ad40dfcc6de85fff"
   },
   {
     "path": "/src/application/user/user.entity.json",

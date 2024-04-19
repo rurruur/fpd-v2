@@ -1,0 +1,47 @@
+{
+  "id": "Post",
+  "table": "posts",
+  "title": "POST",
+  "props": [
+    { "name": "id", "type": "integer", "unsigned": true, "desc": "ID" },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "desc": "등록일시",
+      "dbDefault": "CURRENT_TIMESTAMP"
+    },
+    { "name": "title", "desc": "제목", "type": "string", "length": 100 },
+    { "name": "content", "desc": "내용", "type": "text", "textType": "text" },
+    { "name": "name", "desc": "작성자", "type": "string", "length": 30 },
+    {
+      "name": "file_url",
+      "nullable": true,
+      "desc": "파일URL",
+      "type": "string",
+      "length": 128
+    },
+    {
+      "name": "views",
+      "desc": "조회수",
+      "dbDefault": "0",
+      "type": "integer",
+      "unsigned": true
+    },
+    {
+      "type": "relation",
+      "name": "user",
+      "with": "User",
+      "nullable": true,
+      "desc": "소유자",
+      "relationType": "BelongsToOne",
+      "onUpdate": "CASCADE",
+      "onDelete": "SET NULL"
+    }
+  ],
+  "indexes": [],
+  "subsets": { "A": ["id", "created_at"] },
+  "enums": {
+    "PostOrderBy": { "id-desc": "ID최신순" },
+    "PostSearchField": { "id": "ID" }
+  }
+}

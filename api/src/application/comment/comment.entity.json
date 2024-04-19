@@ -1,0 +1,41 @@
+{
+  "id": "Comment",
+  "table": "comments",
+  "title": "COMMENT",
+  "props": [
+    { "name": "id", "type": "integer", "unsigned": true, "desc": "ID" },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "desc": "등록일시",
+      "dbDefault": "CURRENT_TIMESTAMP"
+    },
+    {
+      "type": "relation",
+      "name": "post",
+      "with": "Post",
+      "desc": "게시글",
+      "relationType": "BelongsToOne",
+      "onUpdate": "CASCADE",
+      "onDelete": "CASCADE"
+    },
+    {
+      "type": "relation",
+      "name": "user",
+      "with": "User",
+      "nullable": true,
+      "desc": "소유자",
+      "relationType": "BelongsToOne",
+      "onUpdate": "CASCADE",
+      "onDelete": "SET NULL"
+    },
+    { "name": "name", "desc": "작성자", "type": "string", "length": 30 },
+    { "name": "content", "desc": "내용", "type": "string", "length": 512 }
+  ],
+  "indexes": [],
+  "subsets": { "A": ["id", "created_at"] },
+  "enums": {
+    "CommentOrderBy": { "id-desc": "ID최신순" },
+    "CommentSearchField": { "id": "ID" }
+  }
+}
