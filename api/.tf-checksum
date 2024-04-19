@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/src/application/sonamu.generated.ts",
+    "checksum": "92d566bdb2662c4ea834a69b30d776ab780e91a8"
+  },
+  {
+    "path": "/src/application/user/user.entity.json",
+    "checksum": "24295a90f7b876c78fdab3d1e8031e54b10d15db"
+  },
+  {
+    "path": "/src/application/user/user.types.ts",
+    "checksum": "d860467474bdf8caf557039ecf835831a8ed73bb"
+  }
+]
