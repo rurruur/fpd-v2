@@ -40,7 +40,25 @@
   ],
   "indexes": [],
   "subsets": {
-    "A": ["id", "created_at", "title", "content", "name", "file_url", "user.id"]
+    "A": [
+      "id",
+      "created_at",
+      "title",
+      "content",
+      "name",
+      "file_url",
+      "user.id"
+    ],
+    "P": [
+      "id",
+      "created_at",
+      "title",
+      "content",
+      "name",
+      "file_url",
+      "views",
+      "user.id"
+    ]
   },
   "enums": {
     "PostOrderBy": { "id-desc": "ID최신순" },

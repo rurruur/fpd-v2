@@ -5,7 +5,7 @@
   },
   {
     "path": "/dist/application/user/user.model.js",
-    "checksum": "224162f18a95f8a7eccff21c96afaee6a944a5fd"
+    "checksum": "e901e8607a1b56332a5692d02cbde083bda21a25"
   },
   {
     "path": "/src/application/comment/comment.entity.json",
@@ -17,7 +17,7 @@
   },
   {
     "path": "/src/application/post/post.entity.json",
-    "checksum": "75fdd5767701fc237628720574e3ef7b238d7112"
+    "checksum": "87c601da8ceec3a3df3c6248b70f2157881b2fa9"
   },
   {
     "path": "/src/application/post/post.types.ts",
@@ -25,7 +25,7 @@
   },
   {
     "path": "/src/application/sonamu.generated.ts",
-    "checksum": "97044ac7d3f690f91dbdb9f1902239ae8ed73293"
+    "checksum": "f1fd3258797299b70838382669ce04d0049ca78f"
   },
   {
     "path": "/src/application/user/user.entity.json",

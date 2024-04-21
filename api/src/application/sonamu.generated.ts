@@ -129,10 +129,22 @@ export const PostSubsetA = z.object({
   user_id: z.number().int().nonnegative().nullable(),
 });
 export type PostSubsetA = z.infer<typeof PostSubsetA>;
+export const PostSubsetP = z.object({
+  id: z.number().int().nonnegative(),
+  created_at: SQLDateTimeString,
+  title: z.string().max(100),
+  content: z.string().max(65535),
+  name: z.string().max(30),
+  file_url: z.string().max(128).nullable(),
+  views: z.number().int().nonnegative(),
+  user_id: z.number().int().nonnegative().nullable(),
+});
+export type PostSubsetP = z.infer<typeof PostSubsetP>;
 export type PostSubsetMapping = {
   A: PostSubsetA;
+  P: PostSubsetP;
 };
-export const PostSubsetKey = z.enum(["A"]);
+export const PostSubsetKey = z.enum(["A", "P"]);
 export type PostSubsetKey = z.infer<typeof PostSubsetKey>;
 
 // Subsets: User

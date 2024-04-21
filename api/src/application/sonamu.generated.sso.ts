@@ -32,6 +32,21 @@ export const postSubsetQueries: { [key in PostSubsetKey]: SubsetQuery } = {
     joins: [],
     loaders: [],
   },
+  P: {
+    select: [
+      "posts.id",
+      "posts.created_at",
+      "posts.title",
+      "posts.content",
+      "posts.name",
+      "posts.file_url",
+      "posts.views",
+      "posts.user_id",
+    ],
+    virtual: [],
+    joins: [],
+    loaders: [],
+  },
 };
 
 // SubsetQuery: User
