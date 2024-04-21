@@ -104,4 +104,12 @@ export namespace UserService {
       data: { params },
     });
   }
+
+  export async function logout(): Promise<void> {
+    return fetch({
+      method: "POST",
+      url: `/api/user/logout`,
+      data: {},
+    });
+  }
 }

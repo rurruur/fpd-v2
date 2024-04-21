@@ -37,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:0.27.2"],\
           ["jotai", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:2.8.0"],\
           ["lodash-es", "npm:4.17.21"],\
+          ["prettier", "npm:3.2.5"],\
           ["prop-types", "npm:15.8.1"],\
           ["qs", "npm:6.12.1"],\
           ["react", "npm:18.2.0"],\
@@ -1984,6 +1985,7 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:0.27.2"],\
           ["jotai", "virtual:f748751da7cf0a0ec0ccd8ea956478985ec2820f0aa28d7ef091ece254319694624072182ad33c7d1c420c160ba89997c51794954f7d096a28712b705e039220#npm:2.8.0"],\
           ["lodash-es", "npm:4.17.21"],\
+          ["prettier", "npm:3.2.5"],\
           ["prop-types", "npm:15.8.1"],\
           ["qs", "npm:6.12.1"],\
           ["react", "npm:18.2.0"],\
@@ -2773,6 +2775,15 @@ const RAW_RUNTIME_STATE =
           ["nanoid", "npm:3.3.7"],\
           ["picocolors", "npm:1.0.0"],\
           ["source-map-js", "npm:1.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["prettier", [\
+      ["npm:3.2.5", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.2.5-6859110d6a/node_modules/prettier/",\
+        "packageDependencies": [\
+          ["prettier", "npm:3.2.5"]\
         ],\
         "linkType": "HARD"\
       }]\

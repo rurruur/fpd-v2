@@ -4,10 +4,10 @@ import App from "./App";
 import { loadDynamicRoutes } from "@sonamu-kit/react-sui";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SWRConfig } from "swr";
-import PublicIndexPage from "./pages";
 import { swrFetcher } from "./services/sonamu.shared";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
+import Post from "./pages/post";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <SWRConfig
@@ -22,9 +22,10 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <Routes>
         <Route path="/" element={<App />}>
           {loadDynamicRoutes(import.meta.glob("./pages/**/*.tsx"))}
+          <Route path="post/:id" element={<Post />} />
         </Route>
         <Route path="*" element={<div>404 Page Not Found</div>} />
       </Routes>
     </BrowserRouter>
-  </SWRConfig>,
+  </SWRConfig>
 );
