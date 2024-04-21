@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <h2>FPD</h2>
+      <h2 onClick={() => navigate("/")}>FPD</h2>
       <Menu>
         {userInfo.id ? (
           <>
