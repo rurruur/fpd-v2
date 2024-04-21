@@ -167,12 +167,13 @@ class UserModelClass extends BaseModelClass {
 
   @api({ httpMethod: "POST" })
   async join(params: UserJoinParams): Promise<number> {
-    const { rows: exists } = await this.findMany("A", {
-      phone: params.phone,
-      name: params.name,
-      nickname: params.nickname,
-      queryMode: "list",
-    });
+    const wdb = this.getDB("w");
+
+    const exists = await wdb("users")
+      .where("phone", params.phone)
+      .orWhere("name", params.name)
+      .orWhere("nickname", params.nickname)
+      .select("phone", "name", "nickname");
     if (exists.some((e) => e.phone === params.phone)) {
       throw new BadRequestException("이미 가입된 전화번호입니다.");
     }
