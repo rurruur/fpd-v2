@@ -1,18 +1,15 @@
 import { useAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
-import { Button, Menu, MenuItem } from "semantic-ui-react";
-import { atomUserInfoState } from "../function/atom";
+import { Menu, MenuItem } from "semantic-ui-react";
+import { atomUserInfo } from "../function/atom";
 import { UserService } from "../services/user/user.service";
+import { useAuth } from "../auth";
 
 export default function Header() {
   const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useAtom(atomUserInfoState);
+  const [userInfo, setUserInfo] = useAtom(atomUserInfo);
 
-  const logout = () => {
-    UserService.logout();
-    setUserInfo({ id: undefined, name: "" });
-    navigate("/login");
-  };
+  const { logout } = useAuth();
 
   return (
     <header className="header">
@@ -25,7 +22,10 @@ export default function Header() {
             <MenuItem name="로그아웃" onClick={logout} />
           </>
         ) : (
-          <MenuItem name="로그인" onClick={() => navigate("/login")} />
+          <>
+            <MenuItem name="회원가입" onClick={() => navigate("/join")} />
+            <MenuItem name="로그인" onClick={() => navigate("/login")} />
+          </>
         )}
       </Menu>
     </header>

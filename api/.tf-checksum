@@ -5,7 +5,7 @@
   },
   {
     "path": "/dist/application/user/user.model.js",
-    "checksum": "e901e8607a1b56332a5692d02cbde083bda21a25"
+    "checksum": "57dd51b91cb3240f6065f2d8a5672271a5ec2109"
   },
   {
     "path": "/src/application/comment/comment.entity.json",
@@ -30,6 +30,10 @@
   {
     "path": "/src/application/user/user.entity.json",
     "checksum": "bef5dc40ec90cb6ee8a9d1eb61a9a01d3b237668"
+  },
+  {
+    "path": "/src/application/user/user.functions.ts",
+    "checksum": "14a6f83afa73195a80460fb94cabb1311e46482f"
   },
   {
     "path": "/src/application/user/user.types.ts",

@@ -1,9 +1,12 @@
-import { atom, useAtom } from "jotai";
+import { atom } from "jotai";
 import { UserSubsetSS } from "../services/sonamu.generated";
 
 export const atomUserInfoState = atom({
   id: undefined as number | undefined,
   name: "",
+  nickname: "",
+  phone: "",
+  role: "",
 });
 
 atomUserInfoState.onMount = (set) => {
@@ -18,6 +21,10 @@ export const atomUserInfo = atom(
   (get) => get(atomUserInfoState),
   (_get, set, update: UserSubsetSS) => {
     set(atomUserInfoState, update);
-    localStorage.setItem("user", JSON.stringify(update));
+    if (!update.id) {
+      localStorage.removeItem("user");
+    } else {
+      localStorage.setItem("user", JSON.stringify(update));
+    }
   }
 );

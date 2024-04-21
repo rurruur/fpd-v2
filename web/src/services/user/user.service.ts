@@ -82,11 +82,12 @@ export namespace UserService {
     });
   }
 
-  export async function me(): Promise<UserSubsetSS> {
-    return fetch({
-      method: "GET",
-      url: `/api/user/me?${qs.stringify({})}`,
-    });
+  export function useMe(
+    options?: SwrOptions
+  ): SWRResponse<UserSubsetSS | null, SWRError> {
+    return useSWR(
+      handleConditional([`/api/user/me`, {}], options?.conditional)
+    );
   }
 
   export async function join(params: UserJoinParams): Promise<number> {
