@@ -141,3 +141,11 @@ POST {{baseUrl}}/api/user/login
 Content-Type: application/json
 
 { "params": { "phone": "PHONE", "password": "PASSWORD" } }
+
+
+###
+
+POST {{baseUrl}}/api/user/logout
+Content-Type: application/json
+
+{}

@@ -226,6 +226,11 @@ class UserModelClass extends BaseModelClass {
     return userSS;
   }
 
+  @api({ httpMethod: "POST", guards: ["normal"] })
+  async logout(context: Context): Promise<void> {
+    await context.passport.logout();
+  }
+
   async hashPassword(password: string): Promise<string> {
     return bcrypt.hash(password, await bcrypt.genSalt(10));
   }
