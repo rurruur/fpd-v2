@@ -20,6 +20,7 @@ import {
   UserLoginParams,
   UserSaveParams,
 } from "./user.types";
+import { validatePassword, validatePhone } from "./user.functions";
 
 /*
   User Model
@@ -182,10 +183,10 @@ class UserModelClass extends BaseModelClass {
       throw new BadRequestException("이미 가입된 닉네임입니다.");
     }
 
-    if (!/^\d{3}-\d{4}-\d{4}$/.test(params.phone)) {
+    if (!validatePhone(params.phone)) {
       throw new BadRequestException("휴대폰번호 형식이 올바르지 않습니다.");
     }
-    if (params.password.length < 8) {
+    if (!validatePassword(params.password)) {
       throw new BadRequestException("비밀번호는 8자 이상이어야 합니다.");
     }
 
