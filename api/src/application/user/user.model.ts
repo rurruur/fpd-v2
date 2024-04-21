@@ -28,7 +28,12 @@ import { validatePassword, validatePhone } from "./user.functions";
 class UserModelClass extends BaseModelClass {
   modelName = "User";
 
-  @api({ httpMethod: "GET", clients: ["axios", "swr"], resourceName: "User" })
+  @api({
+    httpMethod: "GET",
+    clients: ["axios", "swr"],
+    resourceName: "User",
+    guards: ["admin"],
+  })
   async findById<T extends UserSubsetKey>(
     subset: T,
     id: number
@@ -58,7 +63,12 @@ class UserModelClass extends BaseModelClass {
     return rows[0] ?? null;
   }
 
-  @api({ httpMethod: "GET", clients: ["axios", "swr"], resourceName: "Users" })
+  @api({
+    httpMethod: "GET",
+    clients: ["axios", "swr"],
+    resourceName: "Users",
+    guards: ["admin"],
+  })
   async findMany<T extends UserSubsetKey>(
     subset: T,
     params: UserListParams = {}

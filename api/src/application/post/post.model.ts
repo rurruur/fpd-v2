@@ -18,7 +18,12 @@ import { PostListParams, PostSaveParams, PostWriteParams } from "./post.types";
 class PostModelClass extends BaseModelClass {
   modelName = "Post";
 
-  @api({ httpMethod: "GET", clients: ["axios", "swr"], resourceName: "Post" })
+  @api({
+    httpMethod: "GET",
+    clients: ["axios", "swr"],
+    resourceName: "Post",
+    guards: ["normal"],
+  })
   async findById<T extends PostSubsetKey>(
     subset: T,
     id: number
@@ -48,7 +53,12 @@ class PostModelClass extends BaseModelClass {
     return rows[0] ?? null;
   }
 
-  @api({ httpMethod: "GET", clients: ["axios", "swr"], resourceName: "Posts" })
+  @api({
+    httpMethod: "GET",
+    clients: ["axios", "swr"],
+    resourceName: "Posts",
+    guards: ["normal"],
+  })
   async findMany<T extends PostSubsetKey>(
     subset: T,
     params: PostListParams = {}
@@ -158,7 +168,7 @@ class PostModelClass extends BaseModelClass {
     return id;
   }
 
-  @api({ httpMethod: "POST" })
+  @api({ httpMethod: "POST", guards: ["normal"] })
   async delMine(ids: number[], { user }: Context): Promise<number> {
     if (!user) {
       throw new BadRequestException("로그인이 필요합니다.");
