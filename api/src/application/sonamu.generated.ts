@@ -49,6 +49,7 @@ export const PostBaseSchema = z.object({
   file_url: z.string().max(128).nullable(),
   views: z.number().int().nonnegative(),
   user_id: z.number().int().nullable(),
+  // comments: HasMany Comment
 });
 export type PostBaseSchema = z.infer<typeof PostBaseSchema>;
 
@@ -124,6 +125,7 @@ export const CommentSubsetP = z.object({
   created_at: SQLDateTimeString,
   name: z.string().max(30),
   content: z.string().max(512),
+  post_id: z.number().int().nonnegative(),
   user_id: z.number().int().nonnegative(),
 });
 export type CommentSubsetP = z.infer<typeof CommentSubsetP>;
@@ -154,6 +156,11 @@ export const PostSubsetP = z.object({
   file_url: z.string().max(128).nullable(),
   views: z.number().int().nonnegative(),
   user_id: z.number().int().nonnegative().nullable(),
+  comments: z.array(
+    z.object({
+      id: z.number().int().nonnegative(),
+    })
+  ),
 });
 export type PostSubsetP = z.infer<typeof PostSubsetP>;
 export type PostSubsetMapping = {

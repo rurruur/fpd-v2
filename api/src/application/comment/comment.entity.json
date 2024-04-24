@@ -43,7 +43,7 @@
       "name",
       "content"
     ],
-    "P": ["id", "created_at", "user.id", "name", "content"]
+    "P": ["id", "created_at", "post.id", "user.id", "name", "content"]
   },
   "enums": {
     "CommentOrderBy": { "id-desc": "ID최신순" },

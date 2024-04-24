@@ -36,6 +36,15 @@
       "relationType": "BelongsToOne",
       "onUpdate": "CASCADE",
       "onDelete": "SET NULL"
+    },
+    {
+      "type": "relation",
+      "name": "comments",
+      "with": "Comment",
+      "desc": "댓글리스트",
+      "relationType": "HasMany",
+      "joinColumn": "post_id",
+      "fromColumn": "id"
     }
   ],
   "indexes": [],
@@ -57,7 +66,8 @@
       "name",
       "file_url",
       "views",
-      "user.id"
+      "user.id",
+      "comments.id"
     ]
   },
   "enums": {

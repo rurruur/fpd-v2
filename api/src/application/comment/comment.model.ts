@@ -85,6 +85,11 @@ class CommentModelClass extends BaseModelClass {
           qb.whereIn("comments.id", asArray(params.id));
         }
 
+        // post_id
+        if (params.post_id) {
+          qb.whereIn("comments.post_id", asArray(params.post_id));
+        }
+
         // search-keyword
         if (params.search && params.keyword && params.keyword.length > 0) {
           if (params.search === "id") {

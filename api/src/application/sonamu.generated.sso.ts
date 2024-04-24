@@ -36,6 +36,7 @@ export const commentSubsetQueries: { [key in CommentSubsetKey]: SubsetQuery } =
         "comments.created_at",
         "comments.name",
         "comments.content",
+        "comments.post_id",
         "comments.user_id",
       ],
       virtual: [],
@@ -73,7 +74,22 @@ export const postSubsetQueries: { [key in PostSubsetKey]: SubsetQuery } = {
     ],
     virtual: [],
     joins: [],
-    loaders: [],
+    loaders: [
+      {
+        as: "comments",
+        table: "comments",
+        manyJoin: {
+          fromTable: "posts",
+          fromCol: "id",
+          idField: "id",
+          toTable: "comments",
+          toCol: "post_id",
+        },
+        oneJoins: [],
+        select: ["comments.id"],
+        loaders: [],
+      },
+    ],
   },
 };
 
