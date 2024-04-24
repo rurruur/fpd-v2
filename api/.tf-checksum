@@ -9,7 +9,7 @@
   },
   {
     "path": "/dist/application/user/user.model.js",
-    "checksum": "e83017edbd9131c8d1eb46ef2a2e9bf8c5c9ffe4"
+    "checksum": "00fcede40da5d54c86022df72b3146b28889a929"
   },
   {
     "path": "/src/application/comment/comment.entity.json",
@@ -29,11 +29,11 @@
   },
   {
     "path": "/src/application/sonamu.generated.ts",
-    "checksum": "82df4cf1157239ab4bca83ea88a35409cb0e1a91"
+    "checksum": "1456d80cd706b3456b591501c8b07deb72fc2cfb"
   },
   {
     "path": "/src/application/user/user.entity.json",
-    "checksum": "bcc318dd2b3f258c7839482c724148ce3bca5c9e"
+    "checksum": "f0858a7065942a4b5ce63d80ecc41102e7412080"
   },
   {
     "path": "/src/application/user/user.functions.ts",

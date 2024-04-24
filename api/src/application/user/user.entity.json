@@ -21,8 +21,7 @@
       "type": "enum",
       "length": 20,
       "id": "UserRole"
-    },
-    { "name": "approval", "type": "boolean", "desc": "가입승인" }
+    }
   ],
   "indexes": [],
   "subsets": {
@@ -32,6 +31,10 @@
   "enums": {
     "UserOrderBy": { "id-desc": "ID최신순" },
     "UserSearchField": { "id": "ID" },
-    "UserRole": { "admin": "관리자", "normal": "일반사용자" }
+    "UserRole": {
+      "admin": "관리자",
+      "normal": "일반사용자",
+      "pending": "승인대기"
+    }
   }
 }

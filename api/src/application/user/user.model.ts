@@ -205,8 +205,7 @@ class UserModelClass extends BaseModelClass {
       ...params,
       phone: params.phone.replace(/-/g, ""),
       password: await this.hashPassword(params.password),
-      role: "normal",
-      approval: false,
+      role: "pending",
     };
 
     const [id] = await this.save([sp]);
@@ -250,7 +249,9 @@ class UserModelClass extends BaseModelClass {
 
     // transaction
     await wdb.transaction(async (trx) => {
-      return trx("users").whereIn("id", ids).update({ approval: true });
+      return trx("users").whereIn("id", ids).update({
+        role: "normal",
+      });
     });
 
     return ids.length;

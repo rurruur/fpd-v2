@@ -164,8 +164,7 @@ Content-Type: application/json
       "nickname": "NICKNAME",
       "phone": "PHONE",
       "password": "PASSWORD",
-      "role": "admin",
-      "approval": false
+      "role": "admin"
     }
   ]
 }
