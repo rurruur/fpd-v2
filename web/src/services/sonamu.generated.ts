@@ -24,9 +24,15 @@ export const UserOrderByLabel = { "id-desc": "ID최신순" };
 export const UserSearchField = z.enum(["id"]).describe("UserSearchField");
 export type UserSearchField = z.infer<typeof UserSearchField>;
 export const UserSearchFieldLabel = { id: "ID" };
-export const UserRole = z.enum(["admin", "normal"]).describe("UserRole");
+export const UserRole = z
+  .enum(["admin", "normal", "pending"])
+  .describe("UserRole");
 export type UserRole = z.infer<typeof UserRole>;
-export const UserRoleLabel = { admin: "관리자", normal: "일반사용자" };
+export const UserRoleLabel = {
+  admin: "관리자",
+  normal: "일반사용자",
+  pending: "승인대기",
+};
 
 // BaseSchema: Comment
 export const CommentBaseSchema = z.object({
@@ -62,7 +68,6 @@ export const UserBaseSchema = z.object({
   phone: z.string().max(20),
   password: z.string().max(128),
   role: UserRole,
-  approval: z.boolean(),
 });
 export type UserBaseSchema = z.infer<typeof UserBaseSchema>;
 

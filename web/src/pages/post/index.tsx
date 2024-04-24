@@ -19,6 +19,9 @@ export default function Post() {
     if (!loading && !user) {
       navigate("/login");
     }
+    if (user?.role === "pending") {
+      navigate("/pending");
+    }
   }, [user, loading]);
 
   if (!data) {

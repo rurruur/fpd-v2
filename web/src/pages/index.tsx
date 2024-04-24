@@ -26,6 +26,9 @@ export default function PublicIndexPage() {
     if (!loading && !user) {
       navigate("/login");
     }
+    if (user?.role === "pending") {
+      navigate("/pending");
+    }
   }, [user, loading]);
 
   return (
