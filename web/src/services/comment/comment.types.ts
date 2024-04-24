@@ -11,3 +11,12 @@ export const CommentSaveParams = CommentBaseSchema.partial({
   created_at: true,
 });
 export type CommentSaveParams = z.infer<typeof CommentSaveParams>;
+
+// Comment - SaveMineParams
+export const CommentSaveMineParams = CommentSaveParams.pick({
+  id: true,
+  content: true,
+  name: true,
+  post_id: true,
+});
+export type CommentSaveMineParams = z.infer<typeof CommentSaveMineParams>;

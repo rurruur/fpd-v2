@@ -23,7 +23,7 @@
       "type": "relation",
       "name": "user",
       "with": "User",
-      "nullable": true,
+      "nullable": false,
       "desc": "소유자",
       "relationType": "BelongsToOne",
       "onUpdate": "CASCADE",
@@ -33,7 +33,18 @@
     { "name": "content", "desc": "내용", "type": "string", "length": 512 }
   ],
   "indexes": [],
-  "subsets": { "A": ["id", "created_at"] },
+  "subsets": {
+    "A": [
+      "id",
+      "created_at",
+      "user.id",
+      "user.name",
+      "user.phone",
+      "name",
+      "content"
+    ],
+    "P": ["id", "created_at", "user.id", "name", "content"]
+  },
   "enums": {
     "CommentOrderBy": { "id-desc": "ID최신순" },
     "CommentSearchField": { "id": "ID" }

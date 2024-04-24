@@ -9,7 +9,35 @@ import {
 export const commentSubsetQueries: { [key in CommentSubsetKey]: SubsetQuery } =
   {
     A: {
-      select: ["comments.id", "comments.created_at"],
+      select: [
+        "comments.id",
+        "comments.created_at",
+        "comments.name",
+        "comments.content",
+        "user.id as user__id",
+        "user.name as user__name",
+        "user.phone as user__phone",
+      ],
+      virtual: [],
+      joins: [
+        {
+          as: "user",
+          join: "inner",
+          table: "users",
+          from: "comments.user_id",
+          to: "user.id",
+        },
+      ],
+      loaders: [],
+    },
+    P: {
+      select: [
+        "comments.id",
+        "comments.created_at",
+        "comments.name",
+        "comments.content",
+        "comments.user_id",
+      ],
       virtual: [],
       joins: [],
       loaders: [],

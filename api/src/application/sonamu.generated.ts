@@ -33,7 +33,7 @@ export const CommentBaseSchema = z.object({
   id: z.number().int().nonnegative(),
   created_at: SQLDateTimeString,
   post_id: z.number().int(),
-  user_id: z.number().int().nullable(),
+  user_id: z.number().int(),
   name: z.string().max(30),
   content: z.string().max(512),
 });
@@ -110,12 +110,28 @@ export type UserBaseListParams = z.infer<typeof UserBaseListParams>;
 export const CommentSubsetA = z.object({
   id: z.number().int().nonnegative(),
   created_at: SQLDateTimeString,
+  name: z.string().max(30),
+  content: z.string().max(512),
+  user: z.object({
+    id: z.number().int().nonnegative(),
+    name: z.string().max(30),
+    phone: z.string().max(20),
+  }),
 });
 export type CommentSubsetA = z.infer<typeof CommentSubsetA>;
+export const CommentSubsetP = z.object({
+  id: z.number().int().nonnegative(),
+  created_at: SQLDateTimeString,
+  name: z.string().max(30),
+  content: z.string().max(512),
+  user_id: z.number().int().nonnegative(),
+});
+export type CommentSubsetP = z.infer<typeof CommentSubsetP>;
 export type CommentSubsetMapping = {
   A: CommentSubsetA;
+  P: CommentSubsetP;
 };
-export const CommentSubsetKey = z.enum(["A"]);
+export const CommentSubsetKey = z.enum(["A", "P"]);
 export type CommentSubsetKey = z.infer<typeof CommentSubsetKey>;
 
 // Subsets: Post

@@ -1,5 +1,9 @@
 [
   {
+    "path": "/dist/application/comment/comment.model.js",
+    "checksum": "4217ce3668c00555f4fc72301c31dd286fa5f8c9"
+  },
+  {
     "path": "/dist/application/post/post.model.js",
     "checksum": "0417119b2723c4208522ce85f17324b0790e0e00"
   },
@@ -9,11 +13,11 @@
   },
   {
     "path": "/src/application/comment/comment.entity.json",
-    "checksum": "3ca01be8c51c4135905bbf5dfaeb51fdad011f44"
+    "checksum": "ac6ba4407192c16d0014b83822badf6b8f610b50"
   },
   {
     "path": "/src/application/comment/comment.types.ts",
-    "checksum": "d34e9a41803a25581c3a842a2ad72a29b09ac699"
+    "checksum": "49cbc076cd1177d944462965565910279509fddb"
   },
   {
     "path": "/src/application/post/post.entity.json",
@@ -25,7 +29,7 @@
   },
   {
     "path": "/src/application/sonamu.generated.ts",
-    "checksum": "f1fd3258797299b70838382669ce04d0049ca78f"
+    "checksum": "9db9ee52fef1371e0c10c75fa521eb75c0eadfda"
   },
   {
     "path": "/src/application/user/user.entity.json",
