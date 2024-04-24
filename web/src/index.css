@@ -56,8 +56,8 @@ button:focus-visible {
         padding-bottom: 1rem;
         display: flex;
         justify-content: flex-start;
-        align-items: center;
-        gap: 0.5rem;
+        align-items: normal;
+        gap: 0.4rem;
 
         .post-item-comment-count {
           font-size: 0.9rem;

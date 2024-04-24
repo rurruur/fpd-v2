@@ -6,6 +6,7 @@ import {
   ListDescription,
   ListHeader,
   ListItem,
+  ListIcon,
 } from "semantic-ui-react";
 import { useAuth } from "../auth";
 import { useNavigate } from "react-router-dom";
@@ -46,6 +47,7 @@ export default function PublicIndexPage() {
               >
                 <ListHeader className="post-item-header">
                   <div>{e.title}</div>
+                  {e.file_url && <ListIcon name="image outline" />}
                   <div className="post-item-comment-count">
                     {e.comments.length}
                   </div>
