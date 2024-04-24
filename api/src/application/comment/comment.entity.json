@@ -23,7 +23,7 @@
       "type": "relation",
       "name": "user",
       "with": "User",
-      "nullable": false,
+      "nullable": true,
       "desc": "소유자",
       "relationType": "BelongsToOne",
       "onUpdate": "CASCADE",

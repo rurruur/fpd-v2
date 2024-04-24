@@ -33,7 +33,7 @@ export const CommentBaseSchema = z.object({
   id: z.number().int().nonnegative(),
   created_at: SQLDateTimeString,
   post_id: z.number().int(),
-  user_id: z.number().int(),
+  user_id: z.number().int().nullable(),
   name: z.string().max(30),
   content: z.string().max(512),
 });
@@ -62,6 +62,7 @@ export const UserBaseSchema = z.object({
   phone: z.string().max(20),
   password: z.string().max(128),
   role: UserRole,
+  approval: z.boolean(),
 });
 export type UserBaseSchema = z.infer<typeof UserBaseSchema>;
 
@@ -113,11 +114,13 @@ export const CommentSubsetA = z.object({
   created_at: SQLDateTimeString,
   name: z.string().max(30),
   content: z.string().max(512),
-  user: z.object({
-    id: z.number().int().nonnegative(),
-    name: z.string().max(30),
-    phone: z.string().max(20),
-  }),
+  user: z
+    .object({
+      id: z.number().int().nonnegative(),
+      name: z.string().max(30),
+      phone: z.string().max(20),
+    })
+    .nullable(),
 });
 export type CommentSubsetA = z.infer<typeof CommentSubsetA>;
 export const CommentSubsetP = z.object({
@@ -126,7 +129,7 @@ export const CommentSubsetP = z.object({
   name: z.string().max(30),
   content: z.string().max(512),
   post_id: z.number().int().nonnegative(),
-  user_id: z.number().int().nonnegative(),
+  user_id: z.number().int().nonnegative().nullable(),
 });
 export type CommentSubsetP = z.infer<typeof CommentSubsetP>;
 export type CommentSubsetMapping = {

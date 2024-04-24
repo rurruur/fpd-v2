@@ -30,7 +30,7 @@ Content-Type: application/json
       "id": 0,
       "created_at": "2000-01-01",
       "post_id": 0,
-      "user_id": 0,
+      "user_id": null,
       "name": "NAME",
       "content": "CONTENT"
     }
@@ -164,7 +164,8 @@ Content-Type: application/json
       "nickname": "NICKNAME",
       "phone": "PHONE",
       "password": "PASSWORD",
-      "role": "admin"
+      "role": "admin",
+      "approval": false
     }
   ]
 }
@@ -213,3 +214,11 @@ POST {{baseUrl}}/api/user/logout
 Content-Type: application/json
 
 {}
+
+
+###
+
+POST {{baseUrl}}/api/user/approve
+Content-Type: application/json
+
+{ "ids": [0] }

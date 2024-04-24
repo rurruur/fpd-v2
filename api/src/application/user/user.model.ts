@@ -206,6 +206,7 @@ class UserModelClass extends BaseModelClass {
       phone: params.phone.replace(/-/g, ""),
       password: await this.hashPassword(params.password),
       role: "normal",
+      approval: false,
     };
 
     const [id] = await this.save([sp]);
@@ -241,6 +242,18 @@ class UserModelClass extends BaseModelClass {
   @api({ httpMethod: "POST", guards: ["normal"] })
   async logout(context: Context): Promise<void> {
     await context.passport.logout();
+  }
+
+  @api({ httpMethod: "POST", guards: ["admin"] })
+  async approve(ids: number[]): Promise<number> {
+    const wdb = this.getDB("w");
+
+    // transaction
+    await wdb.transaction(async (trx) => {
+      return trx("users").whereIn("id", ids).update({ approval: true });
+    });
+
+    return ids.length;
   }
 
   async hashPassword(password: string): Promise<string> {

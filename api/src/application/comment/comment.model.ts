@@ -162,7 +162,7 @@ class CommentModelClass extends BaseModelClass {
 
     if (smp.id) {
       const comment = await this.findById("A", smp.id);
-      if (comment.user.id !== user.id) {
+      if (comment.user?.id !== user.id) {
         throw new UnauthorizedException("본인의 댓글만 수정할 수 있습니다.");
       }
     }
@@ -184,7 +184,7 @@ class CommentModelClass extends BaseModelClass {
     }
 
     const comment = await this.findById("A", id);
-    if (comment.user.id !== user.id) {
+    if (comment.user?.id !== user.id) {
       throw new UnauthorizedException("본인의 댓글만 삭제할 수 있습니다.");
     }
 

@@ -21,7 +21,8 @@
       "type": "enum",
       "length": 20,
       "id": "UserRole"
-    }
+    },
+    { "name": "approval", "type": "boolean", "desc": "가입승인" }
   ],
   "indexes": [],
   "subsets": {

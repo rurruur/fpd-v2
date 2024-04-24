@@ -22,7 +22,7 @@ export const commentSubsetQueries: { [key in CommentSubsetKey]: SubsetQuery } =
       joins: [
         {
           as: "user",
-          join: "inner",
+          join: "outer",
           table: "users",
           from: "comments.user_id",
           to: "user.id",

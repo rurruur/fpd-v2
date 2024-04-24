@@ -113,4 +113,12 @@ export namespace UserService {
       data: {},
     });
   }
+
+  export async function approve(ids: number[]): Promise<number> {
+    return fetch({
+      method: "POST",
+      url: `/api/user/approve`,
+      data: { ids },
+    });
+  }
 }
