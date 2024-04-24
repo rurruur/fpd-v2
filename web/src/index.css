@@ -54,6 +54,15 @@ button:focus-visible {
       .post-item-header {
         font-size: 1.3rem;
         padding-bottom: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.5rem;
+
+        .post-item-comment-count {
+          font-size: 0.9rem;
+          opacity: 0.7;
+        }
       }
       .post-item-description {
         opacity: 0.7;

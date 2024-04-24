@@ -41,7 +41,12 @@ export default function PublicIndexPage() {
                 href={`/post/${e.id}`}
                 className="post-item-content"
               >
-                <ListHeader className="post-item-header">{e.title}</ListHeader>
+                <ListHeader className="post-item-header">
+                  <div>{e.title}</div>
+                  <div className="post-item-comment-count">
+                    {e.comments.length}
+                  </div>
+                </ListHeader>
                 <ListDescription className="post-item-description">
                   {e.name} | {e.created_at}
                 </ListDescription>
