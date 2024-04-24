@@ -2,6 +2,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { PostService } from "../../services/post/post.service";
 import { useEffect } from "react";
 import { useAuth } from "../../auth";
+import PostDetail from "src/components/PostDetail";
+import CommentEdit from "src/components/CommentEdit";
+import CommentList from "src/components/CommentList";
 
 export default function Post() {
   const navigate = useNavigate();
@@ -28,27 +31,9 @@ export default function Post() {
         <div>Loading...</div>
       ) : (
         <>
-          <div className="post-detail">
-            <div className="post-header">
-              <div className="post-title">
-                <h2>{data.title}</h2>
-              </div>
-              <div className="post-info">
-                <div className="post-user">
-                  <p>{data.name}</p>
-                </div>
-                <div className="created-at">
-                  <p>{data.created_at}</p>
-                </div>
-              </div>
-            </div>
-            <div className="post-content">
-              <p>{data.content}</p>
-            </div>
-          </div>
-          <div>
-            <a href="/">목록</a>
-          </div>
+          <PostDetail post={data} />
+          <CommentEdit postId={postId} />
+          <CommentList postId={postId} />
         </>
       )}
     </>

@@ -49,7 +49,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             nickname: "",
             role: "normal",
           });
-          mutate().then(() => navigate("/"));
+          mutate();
         })
         .finally(() => {
           setLoading(false);

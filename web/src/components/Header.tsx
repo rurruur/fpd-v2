@@ -2,7 +2,6 @@ import { useAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
 import { Menu, MenuItem } from "semantic-ui-react";
 import { atomUserInfo } from "../function/atom";
-import { UserService } from "../services/user/user.service";
 import { useAuth } from "../auth";
 
 export default function Header() {
