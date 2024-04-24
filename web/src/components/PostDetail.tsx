@@ -21,6 +21,7 @@ export default function PostDetail(props: PostDetailProps) {
           </div>
         </div>
         <div className="post-content">
+          {post.file_url && <img src={post.file_url} alt={post.title} />}
           <p>{post.content}</p>
         </div>
       </div>

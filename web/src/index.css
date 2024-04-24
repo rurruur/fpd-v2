@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -89,6 +89,11 @@ button:focus-visible {
   .post-content {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
 
