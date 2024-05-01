@@ -1,6 +1,6 @@
 import { useTypeForm } from "@sonamu-kit/react-sui";
-import { Form, useNavigate } from "react-router-dom";
-import { FormField, Input, TextArea, Button } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom";
+import { Form, FormField, Input, TextArea, Button } from "semantic-ui-react";
 import { PostService } from "../services/post/post.service";
 import { PostWriteParams } from "../services/post/post.types";
 import { defaultCatch } from "../services/sonamu.shared";
