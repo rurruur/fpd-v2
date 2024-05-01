@@ -34,6 +34,9 @@ async function bootstrap() {
         if (!request.user) {
           throw new UnauthorizedException("로그인이 필요합니다.");
         }
+        if (request.user.role === "pending") {
+          throw new UnauthorizedException("회원가입 승인 대기 중입니다.");
+        }
       }
     },
   });

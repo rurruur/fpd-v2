@@ -238,7 +238,7 @@ class UserModelClass extends BaseModelClass {
     return userSS;
   }
 
-  @api({ httpMethod: "POST", guards: ["normal"] })
+  @api({ httpMethod: "POST", guards: ["pending"] })
   async logout(context: Context): Promise<void> {
     await context.passport.logout();
   }
