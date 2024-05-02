@@ -11,6 +11,13 @@ import {
 import { PostSubsetKey, PostSubsetMapping } from "../sonamu.generated";
 import { postSubsetQueries } from "../sonamu.generated.sso";
 import { PostListParams, PostSaveParams, PostWriteParams } from "./post.types";
+import { s3 } from "../file/uploader";
+import {
+  CompleteMultipartUploadCommand,
+  CreateMultipartUploadCommand,
+  UploadPartCommand,
+} from "@aws-sdk/client-s3";
+import { randomUUID } from "crypto";
 
 /*
   Post Model
@@ -161,8 +168,9 @@ class PostModelClass extends BaseModelClass {
       ...wp,
       user_id: user.id,
       views: 0,
-      file_url: null,
+      file_url: wp.file_url ?? null,
     };
+    console.log(sp);
     const [id] = await this.save([sp]);
 
     return id;
@@ -184,6 +192,61 @@ class PostModelClass extends BaseModelClass {
     }
 
     return this.del(ids);
+  }
+
+  @api({ httpMethod: "POST", guards: ["normal"] })
+  async increaseViews(id: number): Promise<void> {
+    const wdb = this.getDB("w");
+    const result = await wdb("posts").where("id", id).increment("views", 1);
+
+    console.log(result);
+  }
+
+  @api({ httpMethod: "POST", guards: ["normal"], clients: ["axios-multipart"] })
+  async uploadFile(context: Context): Promise<{ url?: string }> {
+    const file = await context.file();
+    const key = `${randomUUID()}.${file.mimetype.split("/")[1]}`;
+
+    // size 제한
+    if (file.size > 1024 * 1024 * 10) {
+      throw new BadRequestException("파일 크기는 10MB 이하로 업로드해주세요.");
+    }
+
+    const createResult = await s3.send(
+      new CreateMultipartUploadCommand({
+        Bucket: "fpdiary",
+        Key: key,
+        ACL: "public-read",
+      })
+    );
+    const uploadResult = await s3.send(
+      new UploadPartCommand({
+        Bucket: "fpdiary",
+        Key: createResult.Key,
+        Body: await file.toBuffer(),
+        PartNumber: 1,
+        UploadId: createResult.UploadId,
+      })
+    );
+    const completeResult = await s3.send(
+      new CompleteMultipartUploadCommand({
+        Bucket: "fpdiary",
+        Key: createResult.Key,
+        UploadId: createResult.UploadId,
+        MultipartUpload: {
+          Parts: [
+            {
+              ETag: uploadResult.ETag,
+              PartNumber: 1,
+            },
+          ],
+        },
+      })
+    );
+
+    return {
+      url: completeResult.Location,
+    };
   }
 }
 

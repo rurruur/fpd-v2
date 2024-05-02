@@ -5,7 +5,7 @@
   },
   {
     "path": "/dist/application/post/post.model.js",
-    "checksum": "0417119b2723c4208522ce85f17324b0790e0e00"
+    "checksum": "f2db3ebaba0b75773c9f4c8295e117f3bddf2c47"
   },
   {
     "path": "/dist/application/user/user.model.js",
@@ -25,7 +25,7 @@
   },
   {
     "path": "/src/application/post/post.types.ts",
-    "checksum": "7c4ac371512aea21275b7480c1dc7f5a308dd3a0"
+    "checksum": "e56c0ec4d3165359be3ac444f076d18a8dc35f0b"
   },
   {
     "path": "/src/application/sonamu.generated.ts",

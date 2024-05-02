@@ -9,5 +9,7 @@ declare module "sonamu" {
       logout: () => void;
     };
     user: UserSubsetSS | null;
+    file?: any;
+    req: FastifyRequest;
   }
 }

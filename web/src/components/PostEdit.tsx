@@ -13,10 +13,11 @@ export default function PostForm(props?: Partial<PostWriteParams>) {
     title: props?.title ?? "",
     content: props?.content ?? "",
     name: props?.name ?? "",
+    file_url: props?.file_url,
   };
   const { form, setForm, register } = useTypeForm(PostWriteParams, defForm);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (form.title.trim().length < 1) {
       alert("제목을 입력해주세요.");
@@ -31,9 +32,23 @@ export default function PostForm(props?: Partial<PostWriteParams>) {
       return;
     }
 
-    PostService.write(form)
-      .then((id) => navigate(`/post/${id}`))
-      .catch(defaultCatch);
+    try {
+      const file = (e.target as any).elements[3].files[0];
+      let file_url = null;
+      if (file) {
+        const { url } = await PostService.uploadFile(file);
+        file_url = url;
+        console.log(url);
+        setForm({ ...form, file_url: url });
+        setForm({ ...form, title: "test" });
+        console.log(form);
+      }
+      console.log(form);
+      const id = await PostService.write({ ...form, file_url });
+      navigate(`/post/${id}`);
+    } catch (err) {
+      defaultCatch(err);
+    }
   };
 
   return (
@@ -50,6 +65,10 @@ export default function PostForm(props?: Partial<PostWriteParams>) {
         <FormField>
           <label>내용</label>
           <TextArea {...register("content")} />
+        </FormField>
+        <FormField>
+          <label>사진</label>
+          <Input type="file" accept="image/*" />
         </FormField>
         <Button type="submit">작성</Button>
       </Form>

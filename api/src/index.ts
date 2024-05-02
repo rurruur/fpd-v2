@@ -9,6 +9,7 @@ const port = 19000;
 
 const server = fastify();
 server.register(require("fastify-qs"));
+server.register(require("@fastify/multipart"));
 
 setupAuth(server);
 
@@ -17,12 +18,14 @@ async function bootstrap() {
     contextProvider: (defaultContext, request) => {
       return {
         ...defaultContext,
+        req: request,
         session: request.session,
         user: request.user ?? null,
         passport: {
           login: request.login.bind(request) as Context["passport"]["login"],
           logout: request.logout.bind(request) as Context["passport"]["logout"],
         },
+        file: (request as any).file.bind(request),
       };
     },
     guardHandler: (guard, request, _api) => {

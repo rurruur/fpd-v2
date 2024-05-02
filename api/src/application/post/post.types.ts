@@ -18,5 +18,8 @@ export const PostWriteParams = PostSaveParams.pick({
   title: true,
   content: true,
   name: true,
+  file_url: true,
+}).partial({
+  file_url: true,
 });
 export type PostWriteParams = z.infer<typeof PostWriteParams>;

@@ -88,4 +88,29 @@ export namespace PostService {
       data: { ids },
     });
   }
+
+  export async function increaseViews(id: number): Promise<void> {
+    return fetch({
+      method: "POST",
+      url: `/api/post/increaseViews`,
+      data: { id },
+    });
+  }
+
+  export async function uploadFile(
+    file: File,
+    onUploadProgress?: (pe: ProgressEvent) => void
+  ): Promise<{ url?: string }> {
+    const formData = new FormData();
+    formData.append("file", file);
+    return fetch({
+      method: "POST",
+      url: `/api/post/uploadFile`,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      onUploadProgress,
+      data: formData,
+    });
+  }
 }
