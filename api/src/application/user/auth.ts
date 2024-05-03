@@ -8,7 +8,10 @@ export function setupAuth(server: FastifyInstance) {
     secret: process.env.PASSPORT_SECRET ?? "secret",
     salt: process.env.PASSPORT_SALT ?? "salt",
     cookie: {
-      domain: process.env.DOMAIN ?? "localhost",
+      domain:
+        process.env.NODE_ENV === "production"
+          ? process.env.DOMAIN
+          : "localhost",
       path: "/",
       maxAge: 60 * 60 * 24 * 365 * 10,
     },

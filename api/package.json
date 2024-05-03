@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsc-watch --onSuccess \"node -r dotenv/config dist/index.js\"",
     "build": "tsc",
-    "start": "node -r dotenv/config dist/index.js",
+    "start": "NODE_ENV=production node -r dotenv/config dist/index.js",
     "test": "yarn vitest run",
     "sonamu": "sonamu"
   },
