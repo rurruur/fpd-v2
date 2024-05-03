@@ -1,5 +1,4 @@
 console.time("total");
-require("dotenv").config();
 import fastify from "fastify";
 import { Context, Sonamu, UnauthorizedException } from "sonamu";
 import { setupAuth } from "./application/user/auth";
