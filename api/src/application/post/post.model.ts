@@ -4,6 +4,7 @@ import {
   UploadPartCommand,
 } from "@aws-sdk/client-s3";
 import { randomUUID } from "crypto";
+import sharp from "sharp";
 import {
   BadRequestException,
   BaseModelClass,
@@ -206,17 +207,24 @@ class PostModelClass extends BaseModelClass {
   async uploadFile(context: Context): Promise<{ url?: string }> {
     const file = await context.file?.({
       limits: {
-        fileSize: 1000000 * 5,
+        fileSize: 1000000 * 20,
       },
     });
     if (!file) {
       throw new BadRequestException("파일이 없습니다.");
     }
+
     let buff;
     try {
       buff = await file.toBuffer();
     } catch (error) {
-      throw new BadRequestException("5MB 이상의 파일은 업로드할 수 없습니다.");
+      throw new BadRequestException("20MB 이상의 파일은 업로드할 수 없습니다.");
+    }
+    if (file.file.bytesRead > 1000000) {
+      buff = await sharp(buff)
+        .resize({ width: 600 })
+        .jpeg({ quality: 80 })
+        .toBuffer();
     }
 
     const key = `${randomUUID()}.${file.mimetype.split("/")[1]}`;
