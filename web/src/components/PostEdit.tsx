@@ -1,12 +1,15 @@
 import { useTypeForm } from "@sonamu-kit/react-sui";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, FormField, Input, TextArea, Button } from "semantic-ui-react";
+import { Button, Form, FormField, Input, TextArea } from "semantic-ui-react";
 import { PostService } from "../services/post/post.service";
 import { PostWriteParams } from "../services/post/post.types";
 import { defaultCatch } from "../services/sonamu.shared";
 
 export default function PostForm(props?: Partial<PostWriteParams>) {
   const navigate = useNavigate();
+
+  const [disabled, setDisabled] = useState(false);
 
   const defForm = {
     id: props?.id,
@@ -32,6 +35,7 @@ export default function PostForm(props?: Partial<PostWriteParams>) {
       return;
     }
 
+    setDisabled(true);
     try {
       const file = (e.target as any).elements[3].files[0];
       let file_url = null;
@@ -48,6 +52,8 @@ export default function PostForm(props?: Partial<PostWriteParams>) {
       navigate(`/post/${id}`);
     } catch (err) {
       defaultCatch(err);
+    } finally {
+      setDisabled(false);
     }
   };
 
@@ -70,7 +76,9 @@ export default function PostForm(props?: Partial<PostWriteParams>) {
           <label>사진</label>
           <Input type="file" accept="image/*" />
         </FormField>
-        <Button type="submit">작성</Button>
+        <Button type="submit" disabled={disabled}>
+          작성
+        </Button>
       </Form>
     </>
   );
