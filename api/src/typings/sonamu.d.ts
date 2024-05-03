@@ -1,3 +1,4 @@
+import { MultipartFile } from "@fastify/multipart";
 import { Session } from "@fastify/secure-session";
 import { UserSubsetSS } from "../application/sonamu.generated";
 
@@ -9,7 +10,11 @@ declare module "sonamu" {
       logout: () => void;
     };
     user: UserSubsetSS | null;
-    file?: any;
+    file?: (
+      options?:
+        | Omit<BusboyConfig, "headers">
+        | fastifyMultipart.FastifyMultipartBaseOptions
+    ) => Promise<MultipartFile | undefined>;
     req: FastifyRequest;
   }
 }

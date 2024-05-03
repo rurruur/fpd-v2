@@ -8,7 +8,11 @@ const port = 19000;
 
 const server = fastify();
 server.register(require("fastify-qs"));
-server.register(require("@fastify/multipart"));
+server.register(require("@fastify/multipart"), {
+  limits: {
+    fieldSize: 1000000 * 10,
+  },
+});
 
 setupAuth(server);
 

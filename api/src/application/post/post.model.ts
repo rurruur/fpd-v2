@@ -1,23 +1,23 @@
 import {
-  BaseModelClass,
-  ListResult,
-  asArray,
-  NotFoundException,
-  BadRequestException,
-  api,
-  Context,
-  UnauthorizedException,
-} from "sonamu";
-import { PostSubsetKey, PostSubsetMapping } from "../sonamu.generated";
-import { postSubsetQueries } from "../sonamu.generated.sso";
-import { PostListParams, PostSaveParams, PostWriteParams } from "./post.types";
-import { s3 } from "../file/uploader";
-import {
   CompleteMultipartUploadCommand,
   CreateMultipartUploadCommand,
   UploadPartCommand,
 } from "@aws-sdk/client-s3";
 import { randomUUID } from "crypto";
+import {
+  BadRequestException,
+  BaseModelClass,
+  Context,
+  ListResult,
+  NotFoundException,
+  UnauthorizedException,
+  api,
+  asArray,
+} from "sonamu";
+import { s3 } from "../file/uploader";
+import { PostSubsetKey, PostSubsetMapping } from "../sonamu.generated";
+import { postSubsetQueries } from "../sonamu.generated.sso";
+import { PostListParams, PostSaveParams, PostWriteParams } from "./post.types";
 
 /*
   Post Model
@@ -204,13 +204,22 @@ class PostModelClass extends BaseModelClass {
 
   @api({ httpMethod: "POST", guards: ["normal"], clients: ["axios-multipart"] })
   async uploadFile(context: Context): Promise<{ url?: string }> {
-    const file = await context.file();
-    const key = `${randomUUID()}.${file.mimetype.split("/")[1]}`;
-
-    // size 제한
-    if (file.size > 1024 * 1024 * 10) {
-      throw new BadRequestException("파일 크기는 10MB 이하로 업로드해주세요.");
+    const file = await context.file?.({
+      limits: {
+        fileSize: 1000000 * 5,
+      },
+    });
+    if (!file) {
+      throw new BadRequestException("파일이 없습니다.");
     }
+    let buff;
+    try {
+      buff = await file.toBuffer();
+    } catch (error) {
+      throw new BadRequestException("5MB 이상의 파일은 업로드할 수 없습니다.");
+    }
+
+    const key = `${randomUUID()}.${file.mimetype.split("/")[1]}`;
 
     const createResult = await s3.send(
       new CreateMultipartUploadCommand({
@@ -223,7 +232,7 @@ class PostModelClass extends BaseModelClass {
       new UploadPartCommand({
         Bucket: "fpdiary",
         Key: createResult.Key,
-        Body: await file.toBuffer(),
+        Body: buff,
         PartNumber: 1,
         UploadId: createResult.UploadId,
       })
