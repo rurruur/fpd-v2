@@ -1,13 +1,15 @@
+import { uniqBy } from "lodash";
 import {
-  BaseModelClass,
-  ListResult,
-  asArray,
-  NotFoundException,
   BadRequestException,
-  api,
+  BaseModelClass,
   Context,
+  ListResult,
+  NotFoundException,
   UnauthorizedException,
+  api,
+  asArray,
 } from "sonamu";
+import { NotiModel } from "../noti/noti.model";
 import { CommentSubsetKey, CommentSubsetMapping } from "../sonamu.generated";
 import { commentSubsetQueries } from "../sonamu.generated.sso";
 import {
@@ -165,6 +167,28 @@ class CommentModelClass extends BaseModelClass {
       if (comment.user?.id !== user.id) {
         throw new UnauthorizedException("본인의 댓글만 수정할 수 있습니다.");
       }
+    } else {
+      // 새 댓글 작성 시 알림
+      const wdb = this.getDB("w");
+
+      const [author]: { user_id: number }[] = await wdb("posts as p")
+        .where("p.id", smp.post_id)
+        .select("p.user_id");
+      const users: { user_id: number }[] = await wdb("comments as c")
+        .where("c.post_id", smp.post_id)
+        .select("c.user_id");
+      const userIds = uniqBy([...users, author], (e) => e.user_id)
+        .map((e) => e.user_id)
+        .filter((e) => e !== user.id);
+
+      await NotiModel.save(
+        userIds.map((user_id) => ({
+          user_id,
+          post_id: smp.post_id,
+          read: false,
+          content: `게시글에 댓글이 달렸습니다.\n${smp.name}: ${smp.content}`,
+        }))
+      );
     }
 
     const sp: CommentSaveParams = {

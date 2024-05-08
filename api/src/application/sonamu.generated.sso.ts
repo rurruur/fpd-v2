@@ -1,6 +1,7 @@
 import { SubsetQuery } from "sonamu";
 import {
   CommentSubsetKey,
+  NotiSubsetKey,
   PostSubsetKey,
   UserSubsetKey,
 } from "./sonamu.generated";
@@ -44,6 +45,28 @@ export const commentSubsetQueries: { [key in CommentSubsetKey]: SubsetQuery } =
       loaders: [],
     },
   };
+
+// SubsetQuery: Noti
+export const notiSubsetQueries: { [key in NotiSubsetKey]: SubsetQuery } = {
+  A: {
+    select: ["notis.id", "notis.created_at"],
+    virtual: [],
+    joins: [],
+    loaders: [],
+  },
+  P: {
+    select: [
+      "notis.id",
+      "notis.created_at",
+      "notis.read",
+      "notis.content",
+      "notis.post_id",
+    ],
+    virtual: [],
+    joins: [],
+    loaders: [],
+  },
+};
 
 // SubsetQuery: Post
 export const postSubsetQueries: { [key in PostSubsetKey]: SubsetQuery } = {

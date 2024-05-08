@@ -1,0 +1,51 @@
+{
+  "id": "Noti",
+  "table": "notis",
+  "title": "NOTI",
+  "props": [
+    { "name": "id", "type": "integer", "unsigned": true, "desc": "ID" },
+    {
+      "name": "created_at",
+      "type": "timestamp",
+      "desc": "등록일시",
+      "dbDefault": "CURRENT_TIMESTAMP"
+    },
+    {
+      "type": "relation",
+      "name": "user",
+      "with": "User",
+      "toFilter": true,
+      "desc": "USER",
+      "relationType": "BelongsToOne",
+      "onUpdate": "CASCADE",
+      "onDelete": "CASCADE"
+    },
+    {
+      "type": "relation",
+      "name": "post",
+      "with": "Post",
+      "nullable": false,
+      "desc": "",
+      "relationType": "BelongsToOne",
+      "onUpdate": "CASCADE",
+      "onDelete": "CASCADE"
+    },
+    {
+      "name": "read",
+      "type": "boolean",
+      "desc": "읽음",
+      "dbDefault": "false",
+      "toFilter": true
+    },
+    { "name": "content", "desc": "내용", "type": "string", "length": 256 }
+  ],
+  "indexes": [],
+  "subsets": {
+    "A": ["id", "created_at"],
+    "P": ["id", "created_at", "post.id", "read", "content"]
+  },
+  "enums": {
+    "NotiOrderBy": { "id-desc": "ID최신순" },
+    "NotiSearchField": { "id": "ID" }
+  }
+}

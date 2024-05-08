@@ -171,7 +171,6 @@ class PostModelClass extends BaseModelClass {
       views: 0,
       file_url: wp.file_url ?? null,
     };
-    console.log(sp);
     const [id] = await this.save([sp]);
 
     return id;

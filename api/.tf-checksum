@@ -1,11 +1,15 @@
 [
   {
     "path": "/dist/application/comment/comment.model.js",
-    "checksum": "349a7ff59bbfe7181a5bf29ca0f6b4bc11b43d6b"
+    "checksum": "31c647d0ab2ac101e87a12933b3e7d870126a306"
+  },
+  {
+    "path": "/dist/application/noti/noti.model.js",
+    "checksum": "a1d62edeb9cfb52691ed62332e56e085c5b019de"
   },
   {
     "path": "/dist/application/post/post.model.js",
-    "checksum": "dce7ffb339c6e88b99a2d2118f31050ded3fbbda"
+    "checksum": "ae3a948284db5f0ac0523a63cb36cc4a30b6ce64"
   },
   {
     "path": "/dist/application/user/user.model.js",
@@ -20,6 +24,14 @@
     "checksum": "9b4ed3cbd30c36cb5e49b063d8ef4ce8e232e6cc"
   },
   {
+    "path": "/src/application/noti/noti.entity.json",
+    "checksum": "820c4c4d5bad28581ea2680671cff28b21d91570"
+  },
+  {
+    "path": "/src/application/noti/noti.types.ts",
+    "checksum": "d809efae0218696bfadf849892da9370dbd72863"
+  },
+  {
     "path": "/src/application/post/post.entity.json",
     "checksum": "9ac79b0b65583bc50b60e01342158d045a0d01a9"
   },
@@ -29,7 +41,7 @@
   },
   {
     "path": "/src/application/sonamu.generated.ts",
-    "checksum": "1456d80cd706b3456b591501c8b07deb72fc2cfb"
+    "checksum": "81bd63753d48b49a93f8889f48745f8fd9b9cc7d"
   },
   {
     "path": "/src/application/user/user.entity.json",

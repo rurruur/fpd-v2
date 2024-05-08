@@ -9,6 +9,14 @@ export const CommentSearchField = z.enum(["id"]).describe("CommentSearchField");
 export type CommentSearchField = z.infer<typeof CommentSearchField>;
 export const CommentSearchFieldLabel = { id: "ID" };
 
+// Enums: Noti
+export const NotiOrderBy = z.enum(["id-desc"]).describe("NotiOrderBy");
+export type NotiOrderBy = z.infer<typeof NotiOrderBy>;
+export const NotiOrderByLabel = { "id-desc": "ID최신순" };
+export const NotiSearchField = z.enum(["id"]).describe("NotiSearchField");
+export type NotiSearchField = z.infer<typeof NotiSearchField>;
+export const NotiSearchFieldLabel = { id: "ID" };
+
 // Enums: Post
 export const PostOrderBy = z.enum(["id-desc"]).describe("PostOrderBy");
 export type PostOrderBy = z.infer<typeof PostOrderBy>;
@@ -44,6 +52,17 @@ export const CommentBaseSchema = z.object({
   content: z.string().max(512),
 });
 export type CommentBaseSchema = z.infer<typeof CommentBaseSchema>;
+
+// BaseSchema: Noti
+export const NotiBaseSchema = z.object({
+  id: z.number().int().nonnegative(),
+  created_at: SQLDateTimeString,
+  user_id: z.number().int(),
+  post_id: z.number().int(),
+  read: z.boolean(),
+  content: z.string().max(256),
+});
+export type NotiBaseSchema = z.infer<typeof NotiBaseSchema>;
 
 // BaseSchema: Post
 export const PostBaseSchema = z.object({
@@ -84,6 +103,22 @@ export const CommentBaseListParams = z
   })
   .partial();
 export type CommentBaseListParams = z.infer<typeof CommentBaseListParams>;
+
+// BaseListParams: Noti
+export const NotiBaseListParams = z
+  .object({
+    num: z.number().int().nonnegative(),
+    page: z.number().int().min(1),
+    search: NotiSearchField,
+    keyword: z.string(),
+    orderBy: NotiOrderBy,
+    queryMode: SonamuQueryMode,
+    id: zArrayable(z.number().int().positive()),
+    user_id: z.number().int(),
+    read: z.boolean(),
+  })
+  .partial();
+export type NotiBaseListParams = z.infer<typeof NotiBaseListParams>;
 
 // BaseListParams: Post
 export const PostBaseListParams = z
@@ -143,6 +178,27 @@ export type CommentSubsetMapping = {
 };
 export const CommentSubsetKey = z.enum(["A", "P"]);
 export type CommentSubsetKey = z.infer<typeof CommentSubsetKey>;
+
+// Subsets: Noti
+export const NotiSubsetA = z.object({
+  id: z.number().int().nonnegative(),
+  created_at: SQLDateTimeString,
+});
+export type NotiSubsetA = z.infer<typeof NotiSubsetA>;
+export const NotiSubsetP = z.object({
+  id: z.number().int().nonnegative(),
+  created_at: SQLDateTimeString,
+  read: z.boolean(),
+  content: z.string().max(256),
+  post_id: z.number().int().nonnegative(),
+});
+export type NotiSubsetP = z.infer<typeof NotiSubsetP>;
+export type NotiSubsetMapping = {
+  A: NotiSubsetA;
+  P: NotiSubsetP;
+};
+export const NotiSubsetKey = z.enum(["A", "P"]);
+export type NotiSubsetKey = z.infer<typeof NotiSubsetKey>;
 
 // Subsets: Post
 export const PostSubsetA = z.object({

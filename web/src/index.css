@@ -124,3 +124,14 @@ button:focus-visible {
     }
   }
 }
+
+.noti-list {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .noti-unread {
+    background-color: #f1f1f1;
+  }
+}

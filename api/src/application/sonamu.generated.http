@@ -64,6 +64,63 @@ Content-Type: application/json
 
 ###
 
+GET {{baseUrl}}/api/noti/findById
+	?subset=A
+	&id=0
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/api/noti/findMany
+	?subset=A
+	&params[num]=24
+	&params[page]=1
+	&params[search]=id
+	&params[keyword]=KEYWORD
+	&params[orderBy]=id-desc
+	&params[queryMode]=both
+	&params[id]=0
+	&params[user_id]=0
+	&params[read]=false
+Content-Type: application/json
+
+###
+
+POST {{baseUrl}}/api/noti/save
+Content-Type: application/json
+
+{
+  "spa": [
+    {
+      "id": 0,
+      "created_at": "2000-01-01",
+      "user_id": 0,
+      "post_id": 0,
+      "read": false,
+      "content": "CONTENT"
+    }
+  ]
+}
+
+
+###
+
+POST {{baseUrl}}/api/noti/del
+Content-Type: application/json
+
+{ "ids": [0] }
+
+
+###
+
+POST {{baseUrl}}/api/noti/read
+Content-Type: application/json
+
+{ "ids": [0] }
+
+
+###
+
 GET {{baseUrl}}/api/post/findById
 	?subset=A
 	&id=0
