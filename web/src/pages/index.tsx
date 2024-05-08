@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { PostService } from "../services/post/post.service";
+import { useListParams } from "@sonamu-kit/react-sui";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   List,
   ListContent,
   ListDescription,
   ListHeader,
-  ListItem,
   ListIcon,
+  ListItem,
   Pagination,
 } from "semantic-ui-react";
-import { useAuth } from "../auth";
-import { useNavigate } from "react-router-dom";
-import { useListParams } from "@sonamu-kit/react-sui";
 import { PostBaseListParams } from "src/services/sonamu.generated";
+import { useAuth } from "../auth";
+import { PostService } from "../services/post/post.service";
 
 export default function PublicIndexPage() {
   const navigate = useNavigate();
@@ -60,6 +60,10 @@ export default function PublicIndexPage() {
                     <div className="post-item-comment-count">
                       {e.comments.length}
                     </div>
+                    {Date.now() - new Date(e.created_at).getTime() <
+                      60 * 60 * 24 * 1000 && (
+                      <ListIcon name="leaf" color="green" />
+                    )}
                   </ListHeader>
                   <ListDescription className="post-item-description">
                     {e.name} | {e.created_at}
