@@ -94,6 +94,13 @@ button:focus-visible {
       max-width: 100%;
       height: auto;
     }
+
+    p {
+      white-space: pre-wrap;
+      line-height: 1.5;
+      word-break: break-all;
+      overflow: auto;
+    }
   }
 }
 
